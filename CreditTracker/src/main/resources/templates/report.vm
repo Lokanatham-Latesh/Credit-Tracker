@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Credit Tracker Report</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 7px;
+        }
+        .header {
+            text-align: center;
+            padding: 10px;
+            background-color: #e9ecef;
+            color: #333;
+            border-radius: 5px;
+            margin-bottom: 5px;
+        }
+        
+        h1 {
+            color: #333;
+            text-align: center;
+        }
+        h2 {
+            color: #555;
+            text-align: center;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+            background-color: #fff;
+        }
+        table, th, td {
+            border: 1px solid #ddd;
+        }
+        th, td {
+            padding: 10px;
+            text-align: left;
+        }
+        th {
+            background-color: #e9ecef;
+            color: #333;
+        }
+        .student-info {
+            margin-bottom: 5px;
+            padding: 5px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            background-color: #fff;
+        }
+        .footer {
+            text-align: center;
+            padding: 10px;
+            background-color: #e9ecef;
+            color: #333;
+            border-radius: 5px;
+            margin-top: 5px;
+        }
+        .header p {
+            font-size: 23px;
+            color: #000;
+            margin: 2px 0;
+            font-weight: bold;
+        }
+        p{
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+
+<!-- Header -->
+<div class="header">
+    <h1>Centurion University of Technology and Management</h1>
+    <p>School Of Engineering & Technology, Paralakhemundi</p>
+    <p>Paralakhemundi Campus</p>
+</div>
+
+<h1>Credit Tracker Report</h1>
+
+<div class="student-info">
+    <h2>Student Details</h2>
+    <p><strong>Name:</strong> $studentDetails.name</p>
+    <p><strong>Registration Number:</strong> $studentDetails.regdNo</p>
+    <p><strong>Branch:</strong> $branch</p>
+    <p><strong>Year:</strong> $year</p>
+    <p><strong>Upto Semester:</strong> $highestSemester</p>
+</div>
+
+<h2>Basket Credits</h2>
+<table>
+    <thead>
+        <tr>
+            <th>Basket</th>
+            <th>Requirement</th>
+            <th>Completed Credits</th>
+            <th>Pending Credits</th> <!-- New column header for Requirement -->
+        </tr>
+    </thead>
+    <tbody>
+        #set($requirements = ["17", "12", "26", "58", "48"]) <!-- Define the requirements array -->
+        #foreach($basket in $basketCredits)
+        <tr>
+            <td>$basket.Basket</td>
+            <td>$requirements[$foreach.index]</td> 
+            <td>$basket.Completed</td>
+            <td>$basket.Pending</td>
+            <!-- Access the corresponding requirement value -->
+        </tr>
+        #end
+    </tbody>
+</table>
+
+<!-- Footer -->
+<div class="footer">
+    <p>&copy; 2024 CUTM. All Rights Reserved.</p>
+    <p>Developed by Lokanatham Latesh</p>
+</div>
+
+</body>
+</html>
